@@ -5,7 +5,7 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-ALIVE_PIN="2"
+ALIVE_PIN="4"
 SHUTDOWN_PIN="3"
 
 # Register PINS needed for reboot and alive LED
