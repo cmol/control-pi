@@ -9,7 +9,7 @@ Place script in `/root/control.sh` and run the command:
 
 You might need to prepend `sudo` to this command if you are not root.
 
-## Wireing
+## Wiring
 For the (soft) reboot, wire the button to the GPIO3 pin, and to the GND next to it.
 
 For the booted LED, figure out what resistance you need for the LED (or you might burn of the board),
