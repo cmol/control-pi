@@ -15,14 +15,15 @@ echo "$ALIVE_PIN" > /sys/class/gpio/export
 echo "out" > /sys/class/gpio/gpio"$ALIVE_PIN"/direction
 
 # Run on alive LED
-echo "0" > /sys/class/gpio/gpio"$ALIVE_PIN"/value
 
 while ( true )
 do
+    pgrep vlc && echo "1" > /sys/class/gpio/gpio"$ALIVE_PIN"/value
+    pgrep vlc || echo "0" > /sys/class/gpio/gpio"$ALIVE_PIN"/value
     # check if the pin is connected to GND and, if so, halt the system
     if [ $(</sys/class/gpio/gpio"$SHUTDOWN_PIN"/value) -eq 0 ]
     then
-        echo "1" > /sys/class/gpio/gpio"$ALIVE_PIN"/value
+        echo "0" > /sys/class/gpio/gpio"$ALIVE_PIN"/value
         sleep 3
         if [ $(</sys/class/gpio/gpio"$SHUTDOWN_PIN"/value) -eq 0 ]
         then
